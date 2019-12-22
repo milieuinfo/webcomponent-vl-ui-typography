@@ -39,7 +39,7 @@ export class VlTypography extends VlElement(HTMLElement) {
     __processSlotElements(elements) {
         elements.forEach((element) => {
             if (element.tagName === "SLOT") {
-                this.__processSlotElements([... element.children]);
+                this.__processSlotElements(element.assignedElements());
             } else {
                 this._element.appendChild(element.cloneNode(true));
             }
