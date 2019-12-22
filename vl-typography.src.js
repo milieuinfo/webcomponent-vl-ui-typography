@@ -23,18 +23,26 @@ export class VlTypography extends VlElement(HTMLElement) {
     }
 
     connectedCallback() {
-        this.__processSlotElements();
-        this._observer = this.__observeSlotElements(() => this.__processSlotElements());
+        this._processSlotElements();
+        this._observer = this.__observeSlotElements(() => this._processSlotElements());
     }
 
 	disconnectedCallback() {
 		this._observer.disconnect();
 	}
 
-    __processSlotElements() {
+    _processSlotElements() {
         this.__clearChildren();
-        [... this.children].forEach((child) => {
-            this._element.appendChild(child.cloneNode(true));
+        this.__processSlotElements([... this.children]);
+    }
+
+    __processSlotElements(elements) {
+        elements.forEach((element) => {
+            if (element.tagName === "SLOT") {
+                this.__processSlotElements([... element.children]);
+            } else {
+                this._element.appendChild(element.cloneNode(true));
+            }
         });
     }
 

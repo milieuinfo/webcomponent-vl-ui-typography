@@ -20,6 +20,16 @@
     </template>
   </test-fixture>
 
+  <test-fixture id="vl-typography-slot-fixture">
+      <template>
+        <vl-typography>
+          <slot>
+            <span id="content">content</span>
+          </slot>
+        </vl-topygraphy>
+      </template>
+    </test-fixture>
+
   <script>
     suite('vl-typography', () => {
       const should = chai.should();
@@ -53,6 +63,19 @@
         clone = typography.querySelector('#span-1');
         assert.equal(slot.innerText, text);
         assert.equal(clone.innerText, text);
+      });
+
+      test('wanneer een slot element een slot bevat zal dit bij het kopiëren naar de typography container verwijderd worden zodat de juiste stijl toegepast wordt', () => {
+        const typography = fixture('vl-typography-slot-fixture');
+        const container = typography.shadowRoot.querySelector('.vl-typography');
+        const slot = typography.querySelector('slot');
+        const content = slot.querySelector('#content');
+        const typographySlot = container.querySelector('slot');
+        const typographyContent = container.querySelector('#content');
+        should.exist(slot);
+        should.exist(content);
+        should.not.exist(typographySlot);
+        should.exist(typographyContent);
       });
     });
   </script>
