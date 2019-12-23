@@ -20,29 +20,22 @@ export class VlTypography extends VlElement(HTMLElement) {
             </style>
             <div class="vl-typography"></div>
         `);
+        this._observer = this.__observeSlotElements(() => this.__processSlotElements());
     }
 
     connectedCallback() {
-        this._processSlotElements();
-        this._observer = this.__observeSlotElements(() => this._processSlotElements());
+        this.__processSlotElements();
     }
 
 	disconnectedCallback() {
 		this._observer.disconnect();
 	}
 
-    _processSlotElements() {
+    __processSlotElements() {
         this.__clearChildren();
-        this.__processSlotElements([... this.children]);
-    }
-
-    __processSlotElements(elements) {
-        elements.forEach((element) => {
-            if (element.tagName === "SLOT") {
-                this.__processSlotElements(element.assignedElements());
-            } else {
-                this._element.appendChild(element.cloneNode(true));
-            }
+        [... this.children].forEach((element) => {
+            this._observer.observe(element, { attributes: true, childList: true, characterData: true, subtree: true });
+            this._element.appendChild(element.cloneNode(true));
         });
     }
 
@@ -53,9 +46,7 @@ export class VlTypography extends VlElement(HTMLElement) {
 	}
 
 	__observeSlotElements(callback) {
-		const observer = new MutationObserver(callback);
-		observer.observe(this, { attributes: true, childList: true, characterData: true, subtree: true });
-		return observer;
+		return new MutationObserver(callback);
 	}
 }
 
