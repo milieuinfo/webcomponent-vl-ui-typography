@@ -52,7 +52,6 @@
       test('zal ook tekst elementen kopiëren naar de typography container zodat de juiste stijl toegepast wordt', () => {
         const typography = fixture('vl-typography-text-fixture');
         const container = typography.shadowRoot.querySelector('.vl-typography');
-        debugger;
         assert.equal(typography.textContent, container.textContent);
       });
 
