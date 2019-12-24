@@ -20,6 +20,14 @@
     </template>
   </test-fixture>
 
+  <test-fixture id="vl-typography-text-fixture">
+    <template>
+      <vl-typography>
+        text
+      </vl-topygraphy>
+    </template>
+  </test-fixture>
+
   <script>
     suite('vl-typography', () => {
       const should = chai.should();
@@ -39,6 +47,13 @@
         should.exist(span1);
         should.exist(span2);
         should.exist(span3);
+      });
+
+      test('zal ook tekst elementen kopiëren naar de typography container zodat de juiste stijl toegepast wordt', () => {
+        const typography = fixture('vl-typography-text-fixture');
+        const container = typography.shadowRoot.querySelector('.vl-typography');
+        debugger;
+        assert.equal(typography.textContent, container.textContent);
       });
 
       test('wanneer een slot element wijzigt, zal dit ook gewijzigd worden in de typography container', () => {

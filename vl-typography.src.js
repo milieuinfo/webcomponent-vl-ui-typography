@@ -33,7 +33,7 @@ export class VlTypography extends VlElement(HTMLElement) {
 
     __processSlotElements() {
         this.__clearChildren();
-        [... this.children].forEach((element) => {
+        [... this.childNodes].forEach((element) => {
             this._observer.observe(element, { attributes: true, childList: true, characterData: true, subtree: true });
             this._element.appendChild(element.cloneNode(true));
         });
