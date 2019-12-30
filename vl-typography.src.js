@@ -33,10 +33,7 @@ export class VlTypography extends VlElement(HTMLElement) {
 
     __processSlotElements() {
         this.__clearChildren();
-        [... this.childNodes].forEach((element) => {
-            this._observer.observe(element, { attributes: true, childList: true, characterData: true, subtree: true });
-            this._element.appendChild(element.cloneNode(true));
-        });
+        [... this.childNodes].forEach((element) => this._element.appendChild(element.cloneNode(true)));
     }
 
 	__clearChildren() {
@@ -46,7 +43,9 @@ export class VlTypography extends VlElement(HTMLElement) {
 	}
 
 	__observeSlotElements(callback) {
-		return new MutationObserver(callback);
+        const observer = new MutationObserver(callback);
+        observer.observe(this, { attributes: true, childList: true, characterData: true, subtree: true });
+        return observer;
 	}
 }
 

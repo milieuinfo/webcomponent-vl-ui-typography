@@ -16,7 +16,7 @@
         <span id="span-1">span 1</span>
         <span id="span-2">span 2</span>
         <span id="span-3">span 3</span>
-        </vl-topygraphy>
+        </vl-typography>
     </template>
   </test-fixture>
 
@@ -24,11 +24,19 @@
     <template>
       <vl-typography>
         text
-      </vl-topygraphy>
+      </vl-typography>
     </template>
   </test-fixture>
 
-  <script>
+  <test-fixture id="vl-typography-empty-fixture">
+    <template>
+      <vl-typography></vl-typography>
+    </template>
+  </test-fixture>
+
+  <script type="module">
+    import { awaitUntil } from 'vl-ui-core/vl-core';
+
     suite('vl-typography', () => {
       const should = chai.should();
 
@@ -67,6 +75,19 @@
         clone = typography.querySelector('#span-1');
         assert.equal(slot.innerText, text);
         assert.equal(clone.innerText, text);
+      });
+
+      test('wanneer een slot element at runtime wordt toegevoegd, zal deze gekopieerd worden naar de typography container zodat de juiste stijl toegepast wordt', () => {
+        const typography = fixture('vl-typography-empty-fixture');
+        const container = typography.shadowRoot.querySelector('.vl-typography');
+        container.childElementCount.should.equal(0);
+
+        const p = document.createElement('p');
+        p.textContent = 'foobar';
+        typography.appendChild(p);
+
+        return awaitUntil(() => container.querySelector('p'))
+                .then(() => assert.equal(container.querySelector('p').textContent, 'foobar'));
       });
     });
   </script>
