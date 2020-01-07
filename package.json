@@ -40,13 +40,15 @@
   },
   "homepage": "https://github.com/milieuinfo/webcomponent-vl-typography#readme",
   "dependencies": {
+    "chromedriver": "^79.0.0",
     "vl-ui-core": "^3.0.0"
   },
   "devDependencies": {
     "@govflanders/vl-ui-titles": "^3.9.1",
     "@govflanders/vl-ui-typography": "^3.9.1",
     "@govflanders/vl-ui-util": "^3.9.1",
-    "vl-ui-util": "^3.2.2"
+    "vl-ui-util": "^3.2.2",
+    "uglify-es": "3.3.9"
   },
   "publishConfig": {
     "registry": "http://artifactory-pr-build.lb.cumuli.be:8081/artifactory/api/npm/acd-npm/"
