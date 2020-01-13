@@ -1,15 +1,14 @@
 const { VlElement } = require('vl-ui-core');
+const { By } = require('selenium-webdriver');
 
 class VlTypography extends VlElement {  
-    constructor(driver, selector) {
-        super(driver, selector);
-    }
-
     async getText() {
-        const div = await this.shadowRoot.findElement(By.css('#content'));
-        return this.driver.executeScript('return arguments[0].innerText', div);
+        return await this.getAttribute("innerHTML");
     }
+}
 
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
 }
 
 module.exports = VlTypography;

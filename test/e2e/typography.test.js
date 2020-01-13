@@ -1,5 +1,4 @@
-
-const { driver } = require('vl-ui-core').Test;
+const { assert, driver } = require('vl-ui-core').Test;
 const VlTypographyPage = require('./pages/vl-typography.page');
 
 describe('vl-typography', async () => {
@@ -8,9 +7,11 @@ describe('vl-typography', async () => {
     before(() => {
         return vlTypographyPage.load();
     });
-
-    after(() => {
-        driver.quit();
+    
+    it('Kan de inhoud van de een vl-typography opvragen', async () => {
+    	const vlTypography = await vlTypographyPage.getTypographyPTag();
+    	const text = await vlTypography.getText();
+    	assert.isTrue(text.indexOf("<p>Lorem ipsum dolor sit amet") != -1);
     });
 
 });
