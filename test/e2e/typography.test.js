@@ -11,7 +11,7 @@ describe('vl-typography', async () => {
     it('Kan de inhoud van de een vl-typography opvragen', async () => {
     	const vlTypography = await vlTypographyPage.getTypographyPTag();
     	const text = await vlTypography.getText();
-    	assert.isTrue(text.indexOf("<p>Lorem ipsum dolor sit amet") != -1);
+    	assert.include(text, "<p>Lorem ipsum dolor sit amet");
     });
 
 });
