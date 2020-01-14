@@ -40,7 +40,7 @@
   },
   "homepage": "https://github.com/milieuinfo/webcomponent-vl-ui-typography#readme",
   "dependencies": {
-    "vl-ui-core": "^3.0.0"
+    "vl-ui-core": "^3.1.0"
   },
   "devDependencies": {
     "@govflanders/vl-ui-titles": "^3.9.1",
