@@ -1,7 +1,7 @@
 {
   "name": "vl-ui-typography",
   "main": "index.js",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Gebruik de typograhpy component om de standaard elementen te visualiseren binnen een container. De typography component wordt voornamelijk gebruikt om de stijl van de inhoud van een wysiwyg-editor correct te renderen.",
   "scripts": {
     "prepare": "npm update --dev vl-ui-util && npm run prepare:util",
