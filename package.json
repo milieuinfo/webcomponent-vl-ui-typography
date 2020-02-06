@@ -61,6 +61,9 @@
   "dependencies": {
     "vl-ui-core": "^4.0.0"
   },
+  "peerDependencies": {
+    "vl-ui-core": "^4.0.0"
+  },
   "devDependencies": {
     "@govflanders/vl-ui-titles": "^3.9.1",
     "@govflanders/vl-ui-typography": "^3.9.1",
