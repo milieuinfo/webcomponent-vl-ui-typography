@@ -1,4 +1,4 @@
-import { VlElement, define } from '/node_modules/vl-ui-core/vl-core.js';
+import { VlElement, define } from '/node_modules/vl-ui-core/dist/vl-core.js';
 
 /**
  * VlTypography
@@ -16,7 +16,7 @@ export class VlTypography extends VlElement(HTMLElement) {
     constructor() {
         super(`
             <style>
-                @import '/style.css';
+                @import '/src/style.css';
             </style>
             <div id="content" class="vl-typography"></div>
         `);

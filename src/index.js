@@ -1,3 +1,3 @@
 module.exports = { 
-    VlTypography: require('../vl-typography.src.js').VlTypography
+    VlTypography: require('../dist/vl-typography.src.js').VlTypography
 }

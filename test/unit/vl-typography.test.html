@@ -6,7 +6,7 @@
   <script src="../../../@webcomponents/webcomponentsjs/webcomponents-lite.js"></script>
   <script src="../../../web-component-tester/browser.js"></script>
 
-  <script type="module" src="../../src/vl-typography.src.js"></script>
+  <script type="module" src="../../src/vl-typography.js"></script>
 </head>
 
 <body>
@@ -35,7 +35,7 @@
   </test-fixture>
 
   <script type="module">
-    import { awaitUntil } from 'vl-ui-core/vl-core';
+    import { awaitUntil } from 'vl-ui-core/dist/vl-core';
 
     suite('vl-typography', () => {
       const should = chai.should();

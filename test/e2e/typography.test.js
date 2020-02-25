@@ -8,10 +8,6 @@ describe('vl-typography', async () => {
         return vlTypographyPage.load();
     });
 
-    after(async () => { 
-        return driver.quit();
-    });
-
     it('als gebruiker kan ik de inhoud van een vl-typography zien', async () => {
         const text = `
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod <a href="#">tempor
