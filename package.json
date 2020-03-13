@@ -53,6 +53,6 @@
     "@govflanders/vl-ui-titles": "^3.9.1",
     "@govflanders/vl-ui-typography": "^3.9.1",
     "@govflanders/vl-ui-util": "^3.9.1",
-    "vl-ui-util": "^5.0.7"
+    "vl-ui-util": "^5.0.10"
   }
 }
