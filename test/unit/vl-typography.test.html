@@ -35,7 +35,7 @@
   </test-fixture>
 
   <script type="module">
-    import { awaitUntil } from 'vl-ui-core/dist/vl-core';
+    import {awaitUntil} from 'vl-ui-core/dist/vl-core';
 
     suite('vl-typography', () => {
       const should = chai.should();
@@ -87,7 +87,7 @@
         typography.appendChild(p);
 
         return awaitUntil(() => container.querySelector('p'))
-                .then(() => assert.equal(container.querySelector('p').textContent, 'foobar'));
+            .then(() => assert.equal(container.querySelector('p').textContent, 'foobar'));
       });
     });
   </script>
