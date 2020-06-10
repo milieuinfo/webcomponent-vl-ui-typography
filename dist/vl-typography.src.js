@@ -1,4 +1,4 @@
-import {vlElement, define} from vl-ui-core;
+import {vlElement, define} from 'vl-ui-core';
 
 /**
  * VlTypography
@@ -6,7 +6,6 @@ import {vlElement, define} from vl-ui-core;
  * @classdesc Gebruik de typograhpy component om de standaard elementen te visualiseren binnen een container. De typography component wordt voornamelijk gebruikt om de stijl van de inhoud van een wysiwyg-editor correct te renderen.
  *
  * @extends HTMLElement
- * @mixin vlElement
  *
  * @see {@link https://www.github.com/milieuinfo/webcomponent-vl-ui-typography/releases/latest|Release notes}
  * @see {@link https://www.github.com/milieuinfo/webcomponent-vl-ui-typography/issues|Issues}
