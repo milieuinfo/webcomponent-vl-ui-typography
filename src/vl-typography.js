@@ -7,18 +7,24 @@ import {vlElement, define} from '/node_modules/vl-ui-core/dist/vl-core.js';
  *
  * @extends HTMLElement
  *
+ * @property {string} data-vl-parameters - De key/value parameters die verwerkt en getoond zullen worden in het content element.
+ *
  * @see {@link https://www.github.com/milieuinfo/webcomponent-vl-ui-typography/releases/latest|Release notes}
  * @see {@link https://www.github.com/milieuinfo/webcomponent-vl-ui-typography/issues|Issues}
  * @see {@link https://webcomponenten.omgeving.vlaanderen.be/demo/vl-typography.html|Demo}
  *
  */
 export class VlTypography extends vlElement(HTMLElement) {
+  static get _observedAttributes() {
+    return ['parameters'];
+  }
+
   constructor() {
     super(`
-        <style>
-            @import '/src/style.css';
-        </style>
-        <div id="content" class="vl-typography"></div>
+      <style>
+        @import '/src/style.css';
+      </style>
+      <div id="content" class="vl-typography"></div>
     `);
     this._observer = this.__observeSlotElements(() => this.__processSlotElements());
   }
@@ -31,9 +37,15 @@ export class VlTypography extends vlElement(HTMLElement) {
     this._observer.disconnect();
   }
 
+  _parametersChangedCallback(oldValue, newValue) {
+    this.__processSlotElements();
+  }
+
   __processSlotElements() {
     this.__clearChildren();
-    [...this.childNodes].forEach((element) => this._element.appendChild(element.cloneNode(true)));
+    const parameters = this.dataset.vlParameters ? JSON.parse(this.dataset.vlParameters) : {};
+    const template = new Function('return `' + this.innerHTML + '`').call(parameters);
+    this._element.insertAdjacentHTML('afterbegin', template);
   }
 
   __clearChildren() {
