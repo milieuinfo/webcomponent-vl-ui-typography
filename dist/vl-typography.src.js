@@ -45,7 +45,7 @@ export class VlTypography extends vlElement(HTMLElement) {
   __processSlotElements() {
     this.__clearChildren();
     const parameters = this.dataset.vlParameters ? JSON.parse(this.dataset.vlParameters) : {};
-    const template = new Function('return `' + this.innerHTML + '`').call(parameters);
+    const template = ((html, parameters) => new Function('parameter', 'return `' + html + '`')(parameters))(this.innerHTML, parameters);
     this._element.insertAdjacentHTML('afterbegin', template);
   }
 
