@@ -34,6 +34,15 @@
     </template>
   </test-fixture>
 
+  <test-fixture id="vl-typography-parameters-fixture">
+    <template>
+      <vl-typography>
+        <span id="key1">${parameter.key1}</span>
+        <span id="key2">${parameter.key2}</span>
+      </vl-typography>
+    </template>
+  </test-fixture>
+
   <script type="module">
     import {awaitUntil} from 'vl-ui-core/dist/vl-core';
 
@@ -77,7 +86,7 @@
         assert.equal(clone.innerText, text);
       });
 
-      test('wanneer een slot element at runtime wordt toegevoegd, zal deze gekopieerd worden naar de typography container zodat de juiste stijl toegepast wordt', () => {
+      test('wanneer een slot element at runtime wordt toegevoegd, zal deze gekopieerd worden naar de typography container zodat de juiste stijl toegepast wordt', (done) => {
         const typography = fixture('vl-typography-empty-fixture');
         const container = typography.shadowRoot.querySelector('.vl-typography');
         container.childElementCount.should.equal(0);
@@ -86,8 +95,28 @@
         p.textContent = 'foobar';
         typography.appendChild(p);
 
-        return awaitUntil(() => container.querySelector('p'))
-            .then(() => assert.equal(container.querySelector('p').textContent, 'foobar'));
+        awaitUntil(() => container.querySelector('p')).then(() => {
+          assert.equal(container.querySelector('p').textContent, 'foobar');
+          done();
+        });
+      });
+
+      test('parameters zullen in het content element verwerkt en getoond worden', () => {
+        const typography = fixture('vl-typography-parameters-fixture');
+        const container = typography.shadowRoot.querySelector('.vl-typography');
+        let key1 = container.querySelector('#key1');
+        let key2 = container.querySelector('#key2');
+        assert.equal(key1.innerText, 'undefined');
+        assert.equal(key2.innerText, 'undefined');
+        const parameters = {
+          key1: 'key1',
+          key2: 'key2',
+        };
+        typography.setAttribute('data-vl-parameters', JSON.stringify(parameters));
+        key1 = container.querySelector('#key1');
+        key2 = container.querySelector('#key2');
+        assert.equal(key1.innerText, parameters.key1);
+        assert.equal(key2.innerText, parameters.key2);
       });
     });
   </script>
