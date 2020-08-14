@@ -6,6 +6,7 @@ import {vlElement, define} from '/node_modules/vl-ui-core/dist/vl-core.js';
  * @classdesc Gebruik de typograhpy component om de standaard elementen te visualiseren binnen een container. De typography component wordt voornamelijk gebruikt om de stijl van de inhoud van een wysiwyg-editor correct te renderen.
  *
  * @extends HTMLElement
+ * @mixes vlElement
  *
  * @property {string} data-vl-parameters - De key/value parameters die verwerkt en getoond zullen worden in het content element.
  *
