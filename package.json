@@ -1,6 +1,6 @@
 {
   "name": "vl-ui-typography",
-  "version": "3.1.0",
+  "version": "3.1.1",
   "description": "Gebruik de typograhpy component om de standaard elementen te visualiseren binnen een container. De typography component wordt voornamelijk gebruikt om de stijl van de inhoud van een wysiwyg-editor correct te renderen.",
   "author": "DIDM",
   "license": "MIT",
