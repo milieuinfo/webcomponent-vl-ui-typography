@@ -106,8 +106,8 @@
         const container = typography.shadowRoot.querySelector('.vl-typography');
         let key1 = container.querySelector('#key1');
         let key2 = container.querySelector('#key2');
-        assert.equal(key1.innerText, 'undefined');
-        assert.equal(key2.innerText, 'undefined');
+        assert.equal(key1.innerText, '');
+        assert.equal(key2.innerText, '');
         const parameters = {
           key1: 'key1',
           key2: 'key2',
