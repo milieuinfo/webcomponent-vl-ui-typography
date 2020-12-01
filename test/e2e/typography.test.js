@@ -1,10 +1,11 @@
-const {assert, driver} = require('vl-ui-core').Test.Setup;
+const {assert, getDriver} = require('vl-ui-core').Test.Setup;
 const VlTypographyPage = require('./pages/vl-typography.page');
 
 describe('vl-typography', async () => {
-  const vlTypographyPage = new VlTypographyPage(driver);
+  let vlTypographyPage;
 
   before(() => {
+    vlTypographyPage = new VlTypographyPage(getDriver());
     return vlTypographyPage.load();
   });
 
