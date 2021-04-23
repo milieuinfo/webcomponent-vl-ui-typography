@@ -62,10 +62,11 @@ export class VlTypography extends vlElement(HTMLElement) {
   }
 
   __processTemplateParameters(template, params) {
-    console.log(typeof template);
-    Object.keys(params).forEach((key) => template = template.replaceAll('${parameter.' + key + '}', params[key]));
-    template = template.replace(/\${parameter.\w+}/g, '');
-    return template;
+    if (template && template.replaceAll && params) {
+      Object.keys(params).forEach((key) => template = template.replaceAll('${parameter.' + key + '}', params[key]));
+      template = template.replace(/\${parameter.\w+}/g, '');
+      return template;
+    }
   }
 }
 
