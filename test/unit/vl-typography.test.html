@@ -49,6 +49,10 @@
     suite('vl-typography', () => {
       const should = chai.should();
 
+      setup((done) => {
+        customElements.whenDefined('vl-typography').then(() => done());
+      });
+
       test('bevat een container met de typography class', () => {
         const typography = fixture('vl-typography-fixture');
         const container = typography.shadowRoot.querySelector('.vl-typography');
