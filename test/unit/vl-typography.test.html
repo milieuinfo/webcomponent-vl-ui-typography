@@ -45,6 +45,7 @@
 
   <script type="module">
     import {awaitUntil} from 'vl-ui-core/dist/vl-core';
+    import {VlTypography} from '../../src/vl-typography';
 
     suite('vl-typography', () => {
       const should = chai.should();
@@ -117,6 +118,10 @@
         key2 = container.querySelector('#key2');
         assert.equal(key1.innerText, parameters.key1);
         assert.equal(key2.innerText, parameters.key2);
+      });
+
+      test('via de processTemplateParameters methode kunnen parameters in een template verwerkt worden', () => {
+        assert.equal(VlTypography.replaceTemplateParameters('Van ${parameter.key1} tot en met ${parameter.key2}', {key1: 50, key2: 500}), 'Van 50 tot en met 500');
       });
     });
   </script>
