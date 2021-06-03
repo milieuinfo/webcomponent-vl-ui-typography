@@ -121,7 +121,7 @@
       });
 
       test('via de processTemplateParameters methode kunnen parameters in een template verwerkt worden', () => {
-        assert.equal(VlTypography.processTemplateParameters('Van ${parameter.key1} tot en met ${parameter.key2}', {key1: 50, key2: 500}), 'Van 50 tot en met 500');
+        assert.equal(VlTypography.replaceTemplateParameters('Van ${parameter.key1} tot en met ${parameter.key2}', {key1: 50, key2: 500}), 'Van 50 tot en met 500');
       });
     });
   </script>
