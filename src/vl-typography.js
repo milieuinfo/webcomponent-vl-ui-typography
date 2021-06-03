@@ -45,7 +45,7 @@ export class VlTypography extends vlElement(HTMLElement) {
   __processSlotElements() {
     this.__clearChildren();
     const parameters = this.dataset.vlParameters ? JSON.parse(this.dataset.vlParameters) : {};
-    const template = VlTypography.processTemplateParameters(this.innerHTML, parameters);
+    const template = VlTypography.replaceTemplateParameters(this.innerHTML, parameters);
     this._element.insertAdjacentHTML('afterbegin', template);
   }
 
@@ -69,7 +69,7 @@ export class VlTypography extends vlElement(HTMLElement) {
    * @param {object} params Een object met keys die de naam van de parameter voorstellen (bv. "parameterNaam") en hun waarden
    * @returns {string} De resulterende tekst
    */
-  static processTemplateParameters(template, params) {
+  static replaceTemplateParameters(template, params) {
     Object.keys(params).forEach((key) => template = template.replaceAll('${parameter.' + key + '}', params[key]));
     template = template.replace(/\${parameter.\w+}/g, '');
     return template;
