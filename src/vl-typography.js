@@ -67,7 +67,7 @@ export class VlTypography extends vlElement(HTMLElement) {
    *
    * @param {string} template De template waarin placeholders zitten in de vorm van "${parameter.parameterNaam}"
    * @param {object} params Een object met keys die de naam van de parameter voorstellen (bv. "parameterNaam") en hun waarden
-   * @returns {string} De resulterende tekst
+   * @return {string} De resulterende tekst
    */
   static replaceTemplateParameters(template, params) {
     Object.keys(params).forEach((key) => template = template.replaceAll('${parameter.' + key + '}', params[key]));
