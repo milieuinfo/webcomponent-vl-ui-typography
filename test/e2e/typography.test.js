@@ -9,6 +9,10 @@ describe('vl-typography', async () => {
     return vlTypographyPage.load();
   });
 
+  it('WCAG', async () => {
+    await assert.eventually.isFalse(vlTypographyPage.hasWcagIssues());
+  });
+
   it('als gebruiker kan ik de inhoud van een vl-typography zien', async () => {
     const vlTypography = await vlTypographyPage.getTypographyPTag();
     const innerHTML = await vlTypography.getAttribute('innerHTML');
